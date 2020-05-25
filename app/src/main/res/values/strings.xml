@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Marvel Characters</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //Alerts strings
+    <string name="alert_ok_action">OK</string>
+    <string name="alert_error_title">OPS!!!</string>
+    <string name="alert_success_title">Sucesso!</string>
+    <string name="alert_confirm_logout">Tem certeza de que deseja sair?</string>
+    <string name="action_no">Não</string>
+    <string name="action_yes">Sim</string>
+
+    //Character strings
+    <string name="character_empty">Ops... Nenhuma busca relacionada. Tente novamente!</string>
+    <string name="character_search_empty">Nenhuma referência na busca do personagem!</string>
+    <string name="query_hint_search">Digite o nome do personagem...</string>
+    <string name="toast_search_empty">Favor adicionar o nome do personagem!</string>
+
+    //Comics Strings
+    <string name="comics_empty">No momento não existem HQ referente à esse personagem!</string>
+    <string name="title_label_description">Description</string>
+    <string name="title_label_comics">Comics</string>
+</resources>
