@@ -2,13 +2,13 @@ package com.luiz.marvelcharacters.api.model;
 
 import java.util.List;
 
-public class CharacterDataContainer {
+public class DataContainer<T> {
 
     private int offset;
     private int limit;
     private int total;
     private int count;
-    private List<Character> results;
+    private List<T> results;
 
     public int getOffset() {
         return offset;
@@ -26,7 +26,7 @@ public class CharacterDataContainer {
         return count;
     }
 
-    public List<Character> getResults() {
+    public List<T> getResults() {
         return results;
     }
 }

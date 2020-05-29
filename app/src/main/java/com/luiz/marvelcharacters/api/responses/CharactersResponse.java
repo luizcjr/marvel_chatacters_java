@@ -1,11 +1,12 @@
 package com.luiz.marvelcharacters.api.responses;
 
-import com.luiz.marvelcharacters.api.model.CharacterDataContainer;
+import com.luiz.marvelcharacters.api.model.Character;
+import com.luiz.marvelcharacters.api.model.DataContainer;
 
 public class CharactersResponse {
     private int code ;
     private String status;
-    private CharacterDataContainer data;
+    private DataContainer<Character> data;
 
     public int getCode() {
         return code;
@@ -15,7 +16,7 @@ public class CharactersResponse {
         return status;
     }
 
-    public CharacterDataContainer getData() {
+    public DataContainer<Character> getData() {
         return data;
     }
 }
