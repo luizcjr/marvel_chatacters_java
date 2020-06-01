@@ -1,14 +1,11 @@
 package com.luiz.marvelcharacters.ui.fragments.detail_character;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.Navigation;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
@@ -89,7 +86,7 @@ public class DetailCharacterFragment extends BaseFragment<DetailCharacterBinding
     private void observers(int id) {
         this.viewModel().context = getContext();
         this.viewModel().getCharacter(id);
-        this.viewModel().init(id);
+        this.viewModel().getComicsById(id);
         this.viewModel().character.observe(getViewLifecycleOwner(), characterLiveDataObserver);
         this.viewModel().loading.observe(getViewLifecycleOwner(), loadingLiveDataObserver);
         this.viewModel().loadError.observe(getViewLifecycleOwner(), errorLiveDataObserver);

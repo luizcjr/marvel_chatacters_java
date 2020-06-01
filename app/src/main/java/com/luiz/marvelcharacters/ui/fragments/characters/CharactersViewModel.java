@@ -1,6 +1,5 @@
 package com.luiz.marvelcharacters.ui.fragments.characters;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.paging.LivePagedListBuilder;
@@ -20,10 +19,10 @@ public class CharactersViewModel extends BaseViewModel {
     private PagedList.Config config;
 
     public CharactersViewModel() {
-        init();
+        getCharacters();
     }
 
-    public void init() {
+    public void getCharacters() {
         CharacterDataSourceFactory characterDataSourceFactory = new CharacterDataSourceFactory(disposable, apiRepository, loading, loadError, null);
 
         config = (new PagedList.Config.Builder())
@@ -36,7 +35,7 @@ public class CharactersViewModel extends BaseViewModel {
         character = new LivePagedListBuilder<>(characterDataSourceFactory, config).build();
     }
 
-    public void initSearch(String name) {
+    public void getCharactersByName(String name) {
         CharacterDataSourceFactory characterDataSourceFactory = new CharacterDataSourceFactory(disposable, apiRepository, loading, loadError, name);
 
         config = (new PagedList.Config.Builder())

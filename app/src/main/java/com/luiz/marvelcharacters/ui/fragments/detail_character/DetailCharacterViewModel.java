@@ -25,7 +25,6 @@ public class DetailCharacterViewModel extends BaseViewModel {
     private PagedList.Config config;
     private ComicsDataSourceFactory comicsDataSourceFactory;
 
-
     void getCharacter(int characterId) {
         character = new MutableLiveData<>();
 
@@ -53,7 +52,7 @@ public class DetailCharacterViewModel extends BaseViewModel {
         );
     }
 
-    public void init(int id) {
+    public void getComicsById(int id) {
         comicsDataSourceFactory = new ComicsDataSourceFactory(disposable, apiRepository, loading, loadError, id);
 
         config = (new PagedList.Config.Builder())

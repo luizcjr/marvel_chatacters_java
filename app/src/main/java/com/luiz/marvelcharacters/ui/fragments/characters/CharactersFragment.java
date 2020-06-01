@@ -1,17 +1,9 @@
 package com.luiz.marvelcharacters.ui.fragments.characters;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +11,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.paging.PagedList;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.gson.JsonObject;
 import com.luiz.marvelcharacters.AppApplication;
 import com.luiz.marvelcharacters.R;
 import com.luiz.marvelcharacters.api.model.Character;
@@ -104,7 +94,7 @@ public class CharactersFragment extends BaseFragment<CharactersBinding, Characte
         this.viewDataBinding().edtSearch.setOnClickListener(v -> viewDataBinding().edtSearch.setIconified(false));
         this.viewDataBinding().edtSearch.setOnCloseListener(() -> {
             if (viewModel().getCharacter() == null) {
-                viewModel().init();
+                viewModel().getCharacters();
                 viewModel().removeObservers(getViewLifecycleOwner());
                 viewDataBinding().edtSearch.setFocusable(false);
                 viewDataBinding().clMain.setFocusable(true);
@@ -117,7 +107,7 @@ public class CharactersFragment extends BaseFragment<CharactersBinding, Characte
         this.viewDataBinding().edtSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                viewModel().initSearch(query);
+                viewModel().getCharactersByName(query);
                 viewModel().removeObservers(getViewLifecycleOwner());
                 Utils.hideKeyboardFrom(getContext(), viewDataBinding().edtSearch);
                 observers();
@@ -130,7 +120,7 @@ public class CharactersFragment extends BaseFragment<CharactersBinding, Characte
             public boolean onQueryTextChange(String newText) {
                 if (newText.isEmpty() && search) {
                     search = false;
-                    viewModel().init();
+                    viewModel().getCharacters();
                     viewModel().removeObservers(getViewLifecycleOwner());
                     Utils.hideKeyboardFrom(getContext(), viewDataBinding().edtSearch);
                     observers();

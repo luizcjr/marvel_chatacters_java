@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
 import androidx.paging.PageKeyedDataSource;
 
-import com.luiz.marvelcharacters.api.model.Character;
 import com.luiz.marvelcharacters.api.model.Comics;
-import com.luiz.marvelcharacters.api.responses.CharactersResponse;
 import com.luiz.marvelcharacters.api.responses.ComicsResponse;
 import com.luiz.marvelcharacters.api.services.ApiRepository;
 import com.luiz.marvelcharacters.util.Utils;
@@ -52,6 +50,7 @@ public class ComicsDataSource extends PageKeyedDataSource<Integer, Comics> {
 
     private void createInitialLoad(int requestedPage, int adjacentPage, int requestedLoadSize, LoadInitialCallback<Integer, Comics> callback) {
         beforeRequest();
+
         disposable.add(
                 apiRepository.getComicsCharacter(id, requestedPage * requestedLoadSize)
                         .subscribeWith(new DisposableSingleObserver<ComicsResponse>() {
@@ -71,6 +70,7 @@ public class ComicsDataSource extends PageKeyedDataSource<Integer, Comics> {
 
     private void createLoads(int requestedPage, int adjacentPage, int requestedLoadSize, LoadCallback<Integer, Comics> callback) {
         beforeRequest();
+
         disposable.add(
                 apiRepository.getComicsCharacter(id, requestedPage * requestedLoadSize)
                         .subscribeWith(new DisposableSingleObserver<ComicsResponse>() {
